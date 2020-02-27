@@ -66,7 +66,7 @@ x %>%
 # How unusual is it to win against Ishan 4 to 0?
 
 contest_size <- 6
-number_of_contests <- 1000
+number_of_contests <- 10000
 n <- contest_size * number_of_contests
 
 x <- tibble(p_IB = map_int(1:n, ~ roll_two_dice()),
@@ -84,5 +84,7 @@ x <- tibble(p_IB = map_int(1:n, ~ roll_two_dice()),
                ties = sum(winner == "Tie"))
 
 x
+
+round(100*sum(x$JM_wins >= 4)/10000, 3)
 ```
 
